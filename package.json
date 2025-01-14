@@ -10,8 +10,12 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^2.1.0",
+    "i18next": "^24.2.1",
     "react": "18.3.1",
-    "react-native": "0.76.6"
+    "react-i18next": "^15.4.0",
+    "react-native": "0.76.6",
+    "react-native-reanimated": "^3.16.7"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -27,10 +31,12 @@
     "@types/react": "^18.2.6",
     "@types/react-test-renderer": "^18.0.0",
     "babel-jest": "^29.6.3",
+    "babel-plugin-module-resolver": "^5.0.2",
     "eslint": "^8.19.0",
     "eslint-plugin-prettier": "^5.2.1",
     "jest": "^29.6.3",
     "prettier": "^3.4.2",
+    "react-native-dotenv": "^3.4.11",
     "react-test-renderer": "18.3.1",
     "typescript": "5.0.4"
   },
