@@ -63,3 +63,30 @@ cd RNDemoTemplate
 ```zsh
 yarn
 ```
+
+4. Pods install
+
+```zsh
+cd ios && pod install
+```
+
+## Main Branches
+	1.	main
+	•	Contains stable, production-ready code.
+	•	This branch is used for releases.
+	•	Direct commits to main should be avoided (use Pull Requests instead).
+	2.	develop
+	•	This is the integration branch where the latest code from all developers is merged.
+	•	It may be less stable than main but should be functional enough for testing and ongoing development.
+	•	All feature branches should merge into develop.
+
+## Example Branch Structure
+
+```plaintext
+main
+  └── release/1.0.0
+       └── hotfix/fix-critical-error
+develop
+  └── feature/user-authentication
+  └── bugfix/fix-login-issue
+```
