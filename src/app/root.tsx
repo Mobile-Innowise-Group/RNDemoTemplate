@@ -5,15 +5,22 @@ import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import RNBootSplash from 'react-native-bootsplash';
 import { initialWindowMetrics, SafeAreaProvider } from 'react-native-safe-area-context';
+import { CustomFallback, ErrorBoundary } from '@core/components/error';
 
 function Root(): React.JSX.Element {
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
       <StatusBarWrapper>
         <BootSplashWrapper>
-          <NavigationContainer onReady={() => RNBootSplash.hide({ fade: true })}>
-            <AppStack />
-          </NavigationContainer>
+          <ErrorBoundary
+            fallback={({ error, resetError }) => (
+              <CustomFallback error={error} resetError={resetError} />
+            )}
+          >
+            <NavigationContainer onReady={() => RNBootSplash.hide({ fade: true })}>
+              <AppStack />
+            </NavigationContainer>
+          </ErrorBoundary>
         </BootSplashWrapper>
       </StatusBarWrapper>
     </SafeAreaProvider>
