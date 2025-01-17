@@ -1,52 +1,27 @@
-import AppStack from '@core/navigation/AppStack';
-import { AnimatedBootSplash } from '@features/bootsplash/AnimatedBootSplash';
+import { BootSplashWrapper, StatusBarWrapper } from '@core/components';
+import { withInit } from '@core/hoc/with-init';
+import { AppStack } from '@core/navigation';
 import { NavigationContainer } from '@react-navigation/native';
-import React, { useEffect, useState } from 'react';
-import { Platform, SafeAreaView, StatusBar, useColorScheme } from 'react-native';
+import React from 'react';
 import RNBootSplash from 'react-native-bootsplash';
-
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { initialWindowMetrics, SafeAreaProvider } from 'react-native-safe-area-context';
 
 function Root(): React.JSX.Element {
-  const [visible, setVisible] = useState(true);
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-    flex: 1,
-  };
-
-  useEffect(() => {
-    const init = async () => {};
-
-    StatusBar.setBarStyle('dark-content');
-
-    if (Platform.OS === 'android') {
-      StatusBar.setBackgroundColor('transparent');
-      StatusBar.setTranslucent(true);
-    }
-
-    init().finally(async () => {});
-  }, []);
-
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <NavigationContainer onReady={() => RNBootSplash.hide({ fade: true })}>
-        <AppStack />
-        {visible && (
-          <AnimatedBootSplash
-            onAnimationEnd={() => {
-              setVisible(false);
-            }}
-          />
-        )}
-      </NavigationContainer>
-    </SafeAreaView>
+    <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+      <StatusBarWrapper>
+        <BootSplashWrapper>
+          <NavigationContainer onReady={() => RNBootSplash.hide({ fade: true })}>
+            <AppStack />
+          </NavigationContainer>
+        </BootSplashWrapper>
+      </StatusBarWrapper>
+    </SafeAreaProvider>
   );
 }
 
-export default Root;
+const init = async () => {
+  console.log('App initialization...');
+};
+
+export default withInit(init, Root);
