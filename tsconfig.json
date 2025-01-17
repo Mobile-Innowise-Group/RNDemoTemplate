@@ -28,7 +28,7 @@
       "@auth/*": ["src/features/auth/*"],
       "@home/*": ["src/features/home/*"],
       "@profile/*": ["src/features/profile/*"],
-      "@types/*": ["src/features/types/*"],
+      "@types/*": ["src/types/*"]
     }
   },
   "include": ["next", "src", "index.js", "types"],

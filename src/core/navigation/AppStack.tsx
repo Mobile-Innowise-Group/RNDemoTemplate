@@ -1,10 +1,8 @@
-import BootSplash from 'react-native-bootsplash';
-
 import { AuthenticatedStack } from './AuthenticatedStack';
 import { UnAuthenticatedStack } from './UnAuthenticatedStack';
 
 const sessionTokens = {
-  authToken: null,
+  authToken: 'null', // TODO: Add logic for handling authToken
 };
 
 const AppStack = () => {
@@ -17,4 +15,4 @@ const AppStack = () => {
   return <UnAuthenticatedStack />;
 };
 
-export default AppStack;
+export { AppStack };
