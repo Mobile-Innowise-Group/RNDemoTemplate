@@ -6,8 +6,12 @@ import React from 'react';
 import RNBootSplash from 'react-native-bootsplash';
 import { initialWindowMetrics, SafeAreaProvider } from 'react-native-safe-area-context';
 import { CustomFallback, ErrorBoundary } from '@core/components/error';
+import { APP_NAME } from '@env';
 
 function Root(): React.JSX.Element {
+  if (__DEV__) {
+    console.log(APP_NAME); // TODO: delete after setting your env
+  }
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
       <StatusBarWrapper>

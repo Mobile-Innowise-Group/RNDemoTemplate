@@ -4,7 +4,7 @@
     "useUnknownInCatchVariables": false,
     "baseUrl": ".",
     "skipLibCheck": true,
-    "typeRoots": ["next/types", "node_modules/@types"],
+    "typeRoots": ["src/types", "node_modules/@types"],
     "noEmit": true,
     "types": ["node"],
     "lib": ["esnext"],
@@ -28,7 +28,8 @@
       "@auth/*": ["src/features/auth/*"],
       "@home/*": ["src/features/home/*"],
       "@profile/*": ["src/features/profile/*"],
-      "@types/*": ["src/types/*"]
+      "@types/*": ["src/types/*"],
+      "@env": ["./env.d.ts"]
     }
   },
   "include": ["next", "src", "index.js", "types"],
